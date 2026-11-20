@@ -1,0 +1,40 @@
+{
+  "FileVersion": 3,
+  "Version": 4,
+  "VersionName": "0.3.1",
+  "FriendlyName": "SkinForge Toolset",
+  "Description": "SkinForge as Model Context Protocol tools: describe what a mesh's materials sample, find a point on the surface, stamp a patch into copies of its textures, look at the result offscreen, and read which channel of a packed map a material uses.",
+  "Category": "Automation Forge",
+  "CreatedBy": "Bojan Andrejek",
+  "CreatedByURL": "https://kovati.dev",
+  "DocsURL": "https://github.com/AutomationForgeHQ/SkinForgeToolset",
+  "SupportURL": "https://github.com/AutomationForgeHQ/SkinForgeToolset/issues",
+  "EditorOnly": true,
+  "EnabledByDefault": false,
+  "CanContainContent": false,
+  "IsBetaVersion": false,
+  "IsExperimentalVersion": true,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "SkinForgeToolset",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit",
+      "TargetAllowList": [
+        "Editor"
+      ]
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "SkinForge",
+      "Enabled": true,
+      "Comment": "The capability this exposes."
+    },
+    {
+      "Name": "ToolsetRegistry",
+      "Enabled": true,
+      "Comment": "Not ModelContextProtocol: MCP is one transport reading the registry, and coupling to it would be backwards."
+    }
+  ]
+}

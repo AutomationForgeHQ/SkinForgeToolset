@@ -1,0 +1,76 @@
+# SkinForgeToolset
+
+Every released version of SkinForgeToolset, newest first. A release publishes **one** section of this
+file — the one whose heading matches its tag — as its release notes. Write for someone who
+installs the plugin, not for the commit log.
+
+Headings are `## <x.y.z> — <date>`. Use `Added` / `Changed` / `Fixed` / `Compatibility` /
+`Known issues`, only the ones that apply. A version that is still being prepared says
+`unreleased` in place of the date; set the date when it is tagged. A version that was never
+released at all says `never released`.
+
+**0.3.1 is the first release.** The sections below it (0.1.0 to 0.3.0) are development history:
+those versions were never released and nobody installed them.
+
+## 0.3.1 — 2026-11-20
+
+**The first release**, alongside SkinForge 0.4.0. Agent access to SkinForge through Unreal Engine
+5.8's toolset registry and MCP: 24 typed tools over the same functions the SkinForge panel uses,
+to make a skin set, stamp and edit marks, bake versions, look at the result offscreen or in the
+panel, and apply a version to a character's assets and actors. Free and open source, Apache-2.0.
+
+### Added
+- **The tools**, by area: look at a mesh (`DescribeSkinTarget`, `TraceSkinSurface`,
+  `ProbeTextureChannels`, `CaptureSkinPreview`), one-off patches (`StampSkinPatch`), sets and marks
+  (`CreateSkinSet`, `AddStarterSkinDecals`, `ImportSkinMarks`, `DescribeSkinMark`), layers
+  (`StampSkinLayer`, `EditSkinLayer`), versions (`BakeSkinSet`, `ListSkinVersions`,
+  `RestoreSkinVersionLayers`, `IsSkinSetRenderReady`), apply (`FindSkinMaterialUsers`,
+  `ApplySkinVersion`, `DescribeSkinApply`) and the panel (`OpenSkinForge`, `SetSkinForgeView`,
+  `AimSkinForgeCamera`, `CaptureSkinForgePanel`, `ClickSkinForgeViewport`, `ArmSkinDecal`).
+- Everything the development history below describes, as its latest section leaves it.
+- `IsSkinSetRenderReady` says whether a version is ready to photograph: its baked materials'
+  shaders are compiled, its textures built and its glow maps resident. It lists what is still
+  pending. A set's first glowing bake compiles a copy of the skin material in the background, so
+  poll this in separate calls after Apply and before a capture.
+
+### Compatibility
+- **Needs SkinForge 0.4.0 or later**, the paid plugin this toolset drives (Lite is free). The
+  toolset has no tiers: in Lite, SkinForge bakes every map at most 2K, and Bake Skin Set and Stamp
+  Skin Patch return its note saying so.
+- **Unreal Engine 5.8, editor only**, with the engine's ToolsetRegistry plugin. An MCP client
+  connects through the engine's Model Context Protocol plugin.
+
+## 0.3.0 — never released
+
+### Added
+- `EditSkinLayer` sets a mark's own settings. `"Controls"` takes values by control name, with a
+  choice given by its option name. `"Slots"` takes an ink per slot, as sRGB `[r,g,b]`, `"#RRGGBB"`
+  or linear `{R,G,B}`; `null` resets it. `"Preset"` takes a preset's name. The result adds
+  `ResolvedControls` and `ResolvedSlots`.
+- `ArmSkinDecal` picks a mark in the panel's library, as a click on its card does, and can set the
+  stamp mode: `"once"` or `"keep"`.
+- `DescribeSkinMark` gives a mark's stages, ink slots, controls (and what they drive) and presets.
+- `ImportSkinMarks` makes a folder of mark images and its `starter_decals.json` into mark assets
+  under `/Game/_Generated/`: your own library, written in the starter format.
+- `ClickSkinForgeViewport` takes `bShift` (stamp and keep the mark picked) and `bAlt` (stamp over a
+  layer). Its result ends with the panel's state.
+
+### Changed
+- `ApplySkinVersion` and `DescribeSkinApply` reach the material instances that a placed actor's
+  construction script makes (a MetaHuman in a level). The apply report says the change is
+  in memory only.
+
+## 0.2.0 — never released
+
+### Added
+- `EditSkinLayer`: change some properties of one layer of a set by name (blend mode, ink depth,
+  age, seed, strengths, decal), as the panel's layer details do. A misspelt name is an error.
+- `CaptureSkinPreview` takes `LightFrom`, `LightBrightness` and `SkyBrightness`, for grazing-light
+  checks.
+
+## 0.1.0 — never released
+
+### Added
+- First version. SkinForge as Model Context Protocol tools: describe what a mesh's materials
+  sample, find a point on the surface, stamp a patch into copies of its textures, look at the
+  result offscreen, and read which channel of a packed map a material uses.
