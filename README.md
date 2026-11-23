@@ -1,3 +1,10 @@
+<!-- kovati:header -->
+<p align="center"><a href="https://kovati.dev/tools/skinforge/"><img src="https://raw.githubusercontent.com/AutomationForgeHQ/.github/main/profile/assets/skinforge.jpg" width="100%" alt="SkinForge, part of Kovati" /></a></p>
+
+<p align="center"><b>Agent toolset for SkinForge</b> · Part of <a href="https://kovati.dev"><b>Kovati</b></a>, production tools for Unreal games · <a href="https://kovati.dev/characters/">Characters</a><br />
+<a href="https://kovati.dev/tools/skinforge/">Product page</a> · <a href="https://docs.kovati.dev">Documentation</a> · <a href="https://kovati.dev/download/">Install with the Kovati Hub</a> · <a href="https://kovati.dev/discord">Discord</a></p>
+<!-- /kovati:header -->
+
 # SkinForge Toolset
 
 <!-- forge:version -->**Version 0.3.1. Experimental.**<!-- /forge:version --> Free and open source, Apache-2.0.
